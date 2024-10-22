@@ -5,7 +5,7 @@ sitemap: false
 image: /assets/img/blog/thumbnail/etc/git_section04.png
 categories: [study, etc]
 tags: [etc]
-description: 본 글에서는 Git이 다른 VCS들과의 차이점에 초점을 맞춰 Git의 기초에 대해 알아도보록 한다.
+description: 본 글에서는 Local 환경에서 Git을 설정하고 관리하는 방법을 다룬다.
 ---
 
 * toc
