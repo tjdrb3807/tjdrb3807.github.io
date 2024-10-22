@@ -2,7 +2,7 @@
 layout: post
 title: "Git #Section03 - Basic of Git"
 sitemap: false
-image: /assets/img/blog/thumbnail/etc/git_section02.png
+image: /assets/img/blog/thumbnail/etc/git_section03.png
 categories: [study, etc]
 tags: [etc]
 description: 본 글에서는 Git이 다른 VCS들과의 차이점에 초점을 맞춰 Git의 기초에 대해 알아도보록 한다.
