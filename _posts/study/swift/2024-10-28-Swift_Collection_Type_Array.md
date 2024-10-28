@@ -110,4 +110,76 @@ print("the first item in the list is now equal to \(shoppingList[0]) rather than
 // the first item in the list is now equal to Six eggs rather than Eggs
 ```
 
-서브 스크립트 구문을 사용할 때 인덱스는 유효해야 한다. 만약 `shoppingList[shoppingList.count] = "Salt"`으로 배열 끝에 추가하려고 하면 런타임 에러가 발생한다.
+서브 스크립트 구문을 사용할 때 인덱스는 유효해야 한다. 만약 `shoppingList[shoppingList.count] = "Salt"`으로 배열 끝에 추가하려고 하면 런타임 에러가 발생한다.   
+
+변경할 값들이 변경할 범위와 다른 길이를 가지고 있어도 서브 스크립트 구문으로 범위 안에 값을 한번에 변경할 수 있다.
+```Swift
+shoppingList[4...6] = ["Bananas", "Apples"]
+print("shoppingList now contains \(shoppingList.count) items and equals \(shoppingList)")
+// shoppingList now contains 6 items and equals ["Six eggs", "Milk", "Flour", "Baking Powder", "Bananas", "Apples"]
+```
+
+### Array.insert(_:at:)
+배열의 특정 인덱스에 아이템을 추가하려면 `Array.insert(_:at:)` 메서드를 호출한다.
+```Swift
+shoppingList.insert("Maple Syrup", at: 0)
+print("shoppingList now contains \(shoppingList.count) items")
+// shoppingList now contains 7 items
+
+print("\(shoppingList[0]) is now the first item in the list")
+// Maple Syrup is now the first item in the list
+```
+
+### Array.remove(_:at:)
+`Array.remove(_:at:)`메서드를 통해 배열 특정 인덱스의 요소를 삭제할 수 있다. `Array.remove(_:at:)`메서드는 해당 인덱스의 아이템을 삭제하고 삭제한 아이템을 반환한다.(반환된 값이 필요 없으면 무시해도 된다.)
+```Swift
+let mapleSytup = shoppingList.remove(at: 0)
+print("shoppingList now contains \(shoppingList.count) itmes, and no \(mapleSytup)")
+// shoppingList now contains 6 itmes, and no Maple Syrup
+```
+> 배열의 범위를 넘는 인덱스로 값에 접근 또는 수정하게되면 런타임 에러가 발생한다. 
+
+아이템이 삭제되면 배열의 공간도 삭제되므로 삭제된 요소의 다음 인덱스가 삭제된 인덱스 자리를 대체하게된다.
+```Swift
+let firstItem = shoppingList[0]
+print("firstItem is now equal to \(firstItem)")
+// firstItem is now equal to Six eggs
+```
+
+배열의 마지막 아이템을 삭제하고 싶다면 배열의 `count` 프로퍼티의 사용을 피하기 위해 `remove(at:)` 메서드 보다 `removeLast()` 메서드 사용을 권장한다. `remove(at:)` 메서드와 같이 `removeLast()` 메서드는 삭제된 아이템을 반환한다. 
+```Swift
+let apples = shoppingList.removeLast()
+print("shoppingList now contains \(shoppingList.count) items, and no apples")
+// shoppingList now contains 5 items, and no apples
+
+print("the apples contant is now equal to the removed \(apples) string")
+// the apples contant is now equal to the removed Apples string
+```
+
+## 배열의 반복
+`for - in` 구분을 통해 배열의 전체 값을 알 수 있다.
+```Swift
+for item in shoppingList {
+    print(item)
+}
+
+//Six eggs
+//Milk
+//Flour
+//Baking Powder
+//Bananas
+```
+
+### Array.enumerated()
+각 아이템의 인덱스 뿐만 아니라 값도 필요하다면 `Array.enumberated()` 메서드를 사용한다. 배열의 각 아이템에 대해 `enumerated()` 메서드는 정수와 아이템을 조합하여 __튜플로 반환한다.__ 정수는 0부터 시작하여 각 아이템애 대해 1씩 증가하고 전체 배열을 열거하는 경우 이 정수는 아이템의 인덱스와 일치하다. 
+```Swift
+for (index, value) in shoppingList.enumerated() {
+    print("Item \(index + 1): \(value)")
+}
+
+//Item 1: Six eggs
+//Item 2: Milk
+//Item 3: Flour
+//Item 4: Baking Powder
+//Item 5: Bananas
+```
