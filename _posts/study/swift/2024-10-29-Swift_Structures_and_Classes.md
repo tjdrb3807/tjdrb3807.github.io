@@ -2,10 +2,10 @@
 layout: post
 title: "Swift Structures and Classes"
 sitemap: false
-image: /assets/img/blog/thumbnail/etc/git_section07.png
+image: /assets/img/blog/thumbnail/swift/swift_structureAndClasses.png
 categories: [study, swift]
 tags: [swift]
-description: 본 글에서는 Git이 각각의 Branch를 합치는 두 가지 방법에 대해 다룬다.
+description: 본 글에서는 Swift의 대표적인 사용자 정의 데이터 구조체와 클래스에 대해 다룬다.
 ---
 
 * toc

@@ -2,10 +2,10 @@
 layout: post
 title: "Swift Method"
 sitemap: false
-image: /assets/img/blog/thumbnail/etc/git_section07.png
+image: /assets/img/blog/thumbnail/swift/swift_method.png
 categories: [study, swift]
 tags: [swift]
-description: 본 글에서는 Git이 각각의 Branch를 합치는 두 가지 방법에 대해 다룬다.
+description: 본 글에서는 Swift 특정 타입에 관련된 함수 메서드에 대해 다룬다.
 ---
 
 * toc

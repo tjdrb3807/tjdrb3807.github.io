@@ -2,10 +2,10 @@
 layout: post
 title: "Swift Properties"
 sitemap: false
-image: /assets/img/blog/thumbnail/etc/git_section07.png
+image: /assets/img/blog/thumbnail/swift/swift_properties.png
 categories: [study, swift]
 tags: [swift]
-description: 본 글에서는 Git이 각각의 Branch를 합치는 두 가지 방법에 대해 다룬다.
+description: 본 글에서는 사용자 지정 데이터에 관련된 프로퍼티의 다양한 종류에 대해 다룬다.
 ---
 
 * toc
