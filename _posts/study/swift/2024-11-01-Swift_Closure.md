@@ -5,7 +5,7 @@ sitemap: false
 image: /assets/img/blog/thumbnail/swift/swift_section04_closure.png
 categories: [study, swift]
 tags: [swift]
-description: 본 글에서는 Swift 사용자 지정 데이터의 인스턴스 생성 및 소멸에 대해 다룬다.
+description: 본 글에서는 클로저의 다양한 형태 및 표현법과 탈출, 자동 클로저에 대해 다룬다.
 ---
 
 * toc
