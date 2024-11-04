@@ -313,8 +313,151 @@ class MiddleSchool: School, Named {
     }
 }
 ~~~
+
 ## 프로토콜의 상속과 클래스 전용 프로토콜
+프로토콜은 하나 이상의 프로토콜을 상속받아 기존 프로토콜의 요구사항보다 더 많은 요구사항을 추가할 수 있다.
+~~~swift
+// file: "Code10.swift"
+protocol Readable {
+    func read()
+}
+
+protocol Writeable {
+    func write()
+}
+
+protocol ReadSpeakable: Readable {
+    func speak()
+}
+
+protocol ReadWriteSpeakable: Readable, Writeable {
+    func speak()
+}
+
+class SomeClass: ReadWriteSpeakable {
+    func read() { print("Read") }
+    func write() { print("Write") }
+    func speak() { print("Speak") }
+}
+~~~
+
+Code10에서 확인할 수 있듯 모든 프로토콜을 상속받은 `ReadWriteSpeakable` 프로토콜을 채택한 `SomeClass`는 세 프로토콜이 요구하는 모든 메서드를 구현해야 한다.
+
+프로토콜의 상속 리스트에 `class` 키워드를 명시해 프로토콜이 클래스 타입에만 채택될 수 있도록 제한할 수 있다.
+클래스 전용 프로토콜로 제한을 주기 위해서는 프로토콜의 상속 리스트 맨 처음에 `class`키워드가 위치해야 한다.
+~~~swift
+// file: "Code11.swift"
+protocol ClassOnlyProtocol: class, Readable, Writeable {
+    // Additional requirements...
+}
+
+class SomeClass: ClassOnlyProtocol {
+    func read() { }
+    func write() { }
+}
+
+// 컴파일 에러!
+struct SomeStruct: ClassOnlyProtocol { }
+~~~
+
 ## 프로토콜 조합과 프로토콜 준수 확인
+하나의 매개변수가 여러 프로토콜을 준수하는 타입이어야 한다면 하나의 매개변수에 여러 프로토콜을 한 번에 조합하여 요구할 수 있다. 
+프로토콜을 조합하여 요구할 때 앰퍼샌드(`&`)로 프로토콜을 연결해 명시한다.
+
+또한 특정 클래스의 인스턴스 역할을 할 수 있는지 함께 확인할 수 있다.
+~~~swift
+// file: "Code12.swift"
+protocol Named {
+    var name: String { get }
+}
+
+protocol Aged {
+    var age: Int { get }
+}
+
+struct Person: Named, Aged {
+    var name: String
+    var age: Int
+}
+
+class Car: Named {
+    var name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+}
+
+class Truck: Car, Aged {
+    var age: Int
+    
+    init(name: String, age: Int) {
+        self.age = age
+        super.init(name: name)
+    }
+}
+
+func celebrateBirthday(to celebrator: Named & Aged) {
+    print("Happy birthday \(celebrator.name)!! Now you age \(celebrator.age)")
+}
+
+let faker = Person(name: "Lee Sang-hyuk", age: 28)
+celebrateBirthday(to: faker)    // Happy birthday Lee Sang-hyuk!! Now you age 28
+
+let myCar = Car(name: "Bentley")
+// 컴파일 에러! - Aged 프로토콜 준수 못함
+celebrateBirthday(to: myCar)
+
+// 컴파일 에러! - 클래스 & 프로토콜 조합에서 클래스 타입은 한 타입만 조합 가능
+var someVariable: Car & Truck & Aged
+
+// Car 클래스의 인스턴스 역할 및 Aged 프로토콜 준수하는 인스턴스만 할당 가능
+var someVariable: Car & Aged
+
+someVariable = Truck(name: "Truck", age: 5)
+~~~
+
+`is`와 `as` 연산자를 통해 대상이 프로토콜을 준수하는지 확인할 수 있으며, 특정 프로토콜로 캐스팅 할 수 있다.
+* `is` 연산자를 통해 해당 인스턴스가 특정 프로토콜을 준수하는지 확인할 수 있다.
+* `as?` 다운캐스팅 연산자를 통해 다른 프로토콜로 다운 캐스팅을 시도해볼 수 있다.
+* `as!` 다운캐스팅 연산자를 통해 다른 프로토콜로 강제 다운캐스팅을 할 수 있다.
+  
+~~~swift
+// file: "Code13.swift"
+print(faker is Named)   // true
+print(faker is Aged)    // true
+
+print(myCar is Named)   // true
+print(myCar is Aged)    // false
+
+if let castedInstance = faker as? Named { print("\(castedInstance) is Named") }
+// Person(name: "Lee Sang-hyuk", age: 28) is Named
+
+if let castedInstance = faker as? Aged { print("\(castedInstance) is Aged") }
+// Person(name: "Lee Sang-hyuk", age: 28) is Aged
+
+if let castedInstance = myCar as? Named { print("\(castedInstance) is Named") }
+// Car is Named
+
+if let castedInstance = myCar as? Aged { print("\(castedInstance) is Aged") }
+// 출력 없음.. 캐스팅 실패
+~~~
+
 ## 프로토콜의 선택적 요구
+프로토콜의 요구사항 중 일부를 선택적으로 요구사항으로 지정할 수 있으며, 선택적 요구사항을 정의하고 싶은 프로토콜은 `objc` 속성이 부여된 프로토콜이어야 한다.
+
+또한 `objc` 속성이 부여되는 프로토콜은 Objective-C 클래스를 상속받은 클래스에서만 채택할 수 있다. 즉, 열거형이나 구조체 등에서는 `objc` 속성이 부여된 프로토콜을 채택할 수 없다.
+
+선택적 요구를 하면 프로토콜을 준수하는 타입에 해당 요구사항을 필수로 구현할 필요가 없다. 선택적 요구사항은 `optional` 식별자를 요구사항 정의 앞에 명시한다.
+
 ## 프로토콜 변수와 상수
-## 위임을 위한 프로토콜
+프로토콜 이름을 타입으로 갖는 변수 또는 상수에는 해당 프로토콜을 준수하는 타입의 어떤 인스턴스라도 할당할 수 있다.
+~~~swift
+// file: "Code14.swift"
+var someNamed: Named = Animal(name: "Animal")
+someNamed = Pet(name: "Pet")
+someNamed = Person(name: "Person")
+someNamed = School(name: "School")
+~~~
+
+프로토콜은 프로토콜 이름만으로 인스턴스를 생성하고 초기화할 수 없다. 다만 프로토콜 변수나 상수를 생성하여 특정 프로토콜을 준수하는 타입의 인스턴스를 할당할 수 있다.
