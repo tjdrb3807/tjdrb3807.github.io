@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Computer Science - Memory Structure "
+title: "Computer Science #Section01 - Memory Structure with Swift "
 sitemap: false
 image: /assets/img/blog/thumbnail/swift/swift_section04_protocol.png
 categories: [study, cs]
@@ -10,5 +10,3 @@ description: 본 글에서는 Swift의 프로토콜 지향 프로그래밍과 �
 
 * toc
 {:toc}
-
-## 🤚 Introduce
