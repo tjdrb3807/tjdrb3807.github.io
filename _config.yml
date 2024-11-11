@@ -60,6 +60,8 @@ menu:
         url:           /rx/
       - title:         CS
         url:           /cs/
+      - title:         Design Patterns
+        url:           /design-patterns/
       - title:         ETC
         url:           /etc/ 
       - title:         TIL
