@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Design Patterns #Section01 MVC - Model, View, Controller(1)"
+title: "Design Patterns #Section01 MVC(01) - Model, View, Controller"
 sitemap: false
 # image: /assets/img/blog/thumbnail/etc/git_section07.png
 categories: [study, design_patterns]
@@ -9,13 +9,16 @@ categories: [study, design_patterns]
 * toc
 {:toc}
 
+## 📋 Section List
+[**👉 MVC(01) - Model, View, Controller**](https://tjdrb3807.github.io/study/design_patterns/2024-11-11-design_patterns_MVC/)
+
 ## 🖐️ Introduce
 애플의 iOS 프로그래밍을 처음 접했을 때 Cocoa MVC 디자인 패턴에 대해 가장 먼저 들었던 말은 Massive View Controller였다. 
 
 그 당시 디자인패턴에 대한 견해가 넓지 않아 굳이 구식? 디자인 패턴을 공부할 필요가 있나 싶었던 필자는 Cocoa MVC를 상호 운용할 수 있는 MVVM 패턴을 먼저 익혔고 다양한 프로젝트에 적용해왔다.(물론 MVVM도 써보기만 했지 깊게는 모름..)
 
 하지만 Cocoa MVC는 엄연히 Apple이 iOS 프로그래밍에 채택한 디자인 패턴인다.(Apple도 Massive View Controller를 인정하긴 함..)   
-따라서 본 글에서 iOS 프로그래밍의 가장 기본인 Cocoa MVC 디자인 패턴에 대한 견문을 넓히고, 앞으로 필자의 개발 인생에서 Cocoa MVC를 적용하지 않는 명백한 이유를 수립하고자 작성한다.
+따라서 해당 섹션을 통해 iOS 프로그래밍의 가장 기본인 Cocoa MVC 디자인 패턴에 대한 견문을 넓히고, 앞으로 필자의 개발 인생에서 Cocoa MVC를 적용하지 않는 명백한 이유를 수립하고자 작성한다.
 
 ## 🌱 MVC 객체의 3가지 타입과 연관관계
 Cocoa MVC 패턴을 알아보기 앞서 MVC 디자인 패턴을 구성하는 객체 타입에 대해 알아보도록 한다.    
