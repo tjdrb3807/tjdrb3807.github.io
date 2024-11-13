@@ -9,8 +9,7 @@ categories: [study, design_patterns]
 * toc
 {:toc}
 
-## 📋 Section List
-[**👉 MVC(01) - Model, View, Controller**](https://tjdrb3807.github.io/study/design_patterns/2024-11-11-design_patterns_MVC/)
+**📌 MVC(01) - Model, View, Controller**
 
 ## 🖐️ Introduce
 애플의 iOS 프로그래밍을 처음 접했을 때 Cocoa MVC 디자인 패턴에 대해 가장 먼저 들었던 말은 Massive View Controller였다. 
@@ -55,3 +54,30 @@ Model로 부터 전달된 Data 변경 내역을 Controller 객체는 다시 View
 Controller 객체는 App의 전반적인 Set-up이나 객체의 Life Cycle을 관리할 수도 있다.
 
 ---
+
+## 🌱 Cocoa Controller (Objective-C 공문 참조.. 옛날꺼라 정확한지 확신 없음)
+Cocoa Framework에는 두 가지 종류(Mediating, Coordinating)의 Controller 객체가 존재한다.    
+각 종류는 서로 다른 Class 들과 연결되어 있으며, 서로 다른 범위의 기능을 제공한다.
+
+### Mediating Controller
+Mediating Controller는 `NSController`를 상속받은 객체로 Cocoa Bindings 기능에 사용되며, Interface Builder 라이브러리에서 가져와 사용할 수 있는 만들어진 객체이다.       
+사용자는 View 프로퍼티와 Controller 프로퍼티간 또는 Controller 프로퍼티와 Model의 특정 프로퍼티간 바인딩을 구현하는데 Mediating Controller를 사용할 수 있다.     
+결과적으로 User가 View에 있는 값을 변경할 때, 새로운 값이 Mediating Controller를 통해 자동으로 Model에 전달된다.     
+
+### Coordinating Controller
+Coordinating Controller는 전형적으로 `NSWindowController`나 `NSDocumentController`, 혹은 커스텀을 위해` NSObject`를 상속한 SubClass 인스턴스다.     
+App에서 Coordinating Controller의 역할은 App의 기능성을 감독/조정하는 것이다.     
+Coordianting Controller는 다음과 같은 기능을 제공한다.      
+1. Delegate 메세지에 응답
+2. Notification 감지
+3. Action 메세지 응답
+4. 소유한 객제의 Life Cycle 관리
+5. 객체 간 연결점 만들기
+
+### Mediating + Coordinating Controller
+`NSObject`를 상속받아 커스텀한 SubClass의 인스턴스는 Coordinating Controller로 적합하다.     
+이런 종류의 Controller객체는 Mediating + Coordinating 기능을 결합한다.     
+Midiating 기능을 위해 View와 Model간 Data 이동 구현에 Target-action/outlets/delegation 등과 같은 메커니즘을 사용한다.       
+해당 인스턴스는 Glue Code를 포함하고 있는데 이 Code는 독점적으로 App-specific하기 때문에, 가장 재사용성이 적은 종류의 객체이다.
+
+(이게 UIViewController 같은데 맞나???)
