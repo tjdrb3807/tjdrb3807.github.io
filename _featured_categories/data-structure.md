@@ -1,9 +1,9 @@
 ---
 layout: list
-title: CS
-slug: cs
+title: Data Structure
+slug: data-structure
 description: >
   Everything about development
 sitemap: false
-order: 2
+order: 3
 ---

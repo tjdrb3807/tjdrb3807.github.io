@@ -1,9 +1,9 @@
 ---
 layout: list
-title: Rx
-slug: rx
+title: Algorithm
+slug: algorithm
 description: >
   Everything about development
 sitemap: false
-order: 2
+order: 3
 ---

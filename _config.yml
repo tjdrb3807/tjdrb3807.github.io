@@ -52,24 +52,13 @@ menu:
   - title:             Study
     url:               /study/
     submenu:
-      - title:         Swift
-        url:           /swift/
       - title:         iOS
-        url:           /ios/
-      - title:         Rx
-        url:           /rx/
-      - title:         CS
-        url:           /cs/
-      - title:         Design Patterns
-        url:           /design-patterns/
-      - title:         ETC
-        url:           /etc/ 
-      - title:         TIL
-        url:           /til/ 
-  - title:             Documentation
-    url:               /docs/
-  - title:             About
-    url:               /about/
+        url:           /ios 
+  - title:             Algorithm
+    url:               /algorithm/
+    submenu:
+      - title:         Data Structure
+        url:           /data-structure/
 
 # Add links to the footer.
 # Typically you'll want to link to your cookie- or privacy policy (if appliable), etc..
