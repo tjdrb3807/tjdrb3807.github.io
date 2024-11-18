@@ -301,7 +301,7 @@ struct LinkedList<T> {
     mutating func remove(after node: Node<T>) -> T? {
     	defer {
         	if node.next === tail { tail = node }
-            node.next = node.next?.next // ⭐️
+            node.next = node.next?.next
         }
 
         return node.next?.data
