@@ -14,7 +14,7 @@ Serial Queue는 한 번에 하나의 작업만 실행할 수 있는 Dispatch Que
 
 Serial Queue에 작업이 등록되는 순서대로 실행되며, 다음 작업은 현재 작업이 끝난 후에 실행되기 때문에 작업 순서가 보장된다.
 
-GDC가 제공하는 Main Queue가 대표적인 Serial Queue에 속한다.
+GCD가 제공하는 Main Queue가 대표적인 Serial Queue에 속한다.
 
 ### Serial Queue에서 Async 호출
 Async를 사용하면 이를 호출한 Thread가 해당 작업이 끝날 때까지 대기하지 않고, 바로 다음 코드를 실행한다. 
@@ -64,7 +64,7 @@ Concurrent Queue는 동시성을 지원하는 Dispatch Queue의 한 종류로, �
 
 이때 작업이 Queue에 추가된 순서대로 실행되기 때문에 시작 순서는 보장되지만, 각 작업의 완료 시간은 작업 내용과 실행 환경에 따라 다르므로 보장되지 않는다.
 
-GDC가 제공하는 Global Queue가 대표적인 Concurrent Queue에 속한다.
+GCD가 제공하는 Global Queue가 대표적인 Concurrent Queue에 속한다.
 
 ~~~swift
 // Main Thread에서 호출한다 가정
