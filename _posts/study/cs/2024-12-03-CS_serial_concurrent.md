@@ -48,7 +48,7 @@ someSerialQueue.async {
 // someSerialQueue[Task01, Task02, Task03]
 
 // START: Task01        1초 텀
-// ENE: Task02
+// END: Task02
 // START: Task02        1초 텀
 // END: Task02
 // START: Task03
