@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Computer Science - Serial & Concurrent(01)"
+title: "iOS - Serial & Concurrent(01)"
 sitemap: false
-categories: [study, cs]
-tags: [cs]
+categories: [study, ios]
+tags: [ios]
 ---
 
 * toc
