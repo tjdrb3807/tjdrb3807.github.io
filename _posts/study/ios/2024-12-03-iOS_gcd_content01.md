@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "iOS - Serial & Concurrent(01)"
+title: "GCD(01) - Serial & Concurret Queue"
 sitemap: false
 categories: [study, ios]
 tags: [ios]
