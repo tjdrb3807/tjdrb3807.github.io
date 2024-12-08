@@ -59,11 +59,6 @@ menu:
     submenu:
       - title:         Data Structure
         url:           /data-structure/
-  - title:             Project
-    url:               /project/
-    submenu:        
-      - title:         NBC Kiosk
-        url:           /nbckiosk/
 
 # Add links to the footer.
 # Typically you'll want to link to your cookie- or privacy policy (if appliable), etc..
