@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "2022-12-02 TIL"
+title: "2022-12-06 TIL"
 sitemap: false
 categories: [study, til]
 tags: [til]
