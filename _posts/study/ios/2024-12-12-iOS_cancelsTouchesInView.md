@@ -62,7 +62,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 
 구글링에 "swift tap gesture 인식 안됨"이라 검색하니 나와 비슷한 사례의 글들을 볼 수 있었고 그중 중복적으로 보이는 키워드는 `cancelsTouchesInView = false`였다. 
 
-이 한 줄의 코드작성으로 오류를 잡을 수 있었지만 매커니즘도 모르고 사용하는 코드는 의미없다 생각하기에 본 글에서는 cancelTouchedInView에 대해서 알아보고자 한다.
+이 한 줄의 코드작성으로 오류를 잡을 수 있었지만 매커니즘을 모르고 사용하는 코드는 의미없다 생각하기에 본 글에서는 cancelTouchedInView에 대해서 알아보고자 한다.
 
 ## Discussion
 <div style="text-align: center;">
@@ -71,14 +71,10 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 
 <br>
 
-공식문서는 해당 프로퍼티는 다음과 같이 설명하고있다.
+공식문서는 해당 프로퍼티를 다음과 같이 설명하고있다.
 
 >cancelsTouchedInView 프로퍼티는 `true`가 기본값이며, Gesture recognizer가 제스처를 인식한 경우, 해당 제스처의 보류 중인 터치 이벤트는 뷰에 전달되지 않으며, 이미 전달된 터치 이벤트는 `touchesCancelled(_:with:)` 메서드를 통해 취소된다.     
 >만약 Gesture recognizer가 제스처를 인식하지 못했거나, 해당 프로퍼티의 값이 `false`인 경우, View는 멀티터치 시퀀스의 모든 터치 이벤트를 계속해서 받을 수 있다.
-
-<br>
-
-정리하자면 다음과 같다
 
 ### cancelsTouchesInView = true
 * 제스처가 인식되면, 해당 터치와 관련된 이벤트(.touchesBegan 같은것들)를 더이상 터치가 발생한 View로 전달되지 않게한다.
@@ -86,7 +82,27 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 
 ### cancelsTouchesInView = false
 * 제스처가 인식되더라도 터치 이벤트는 View로 계속 전달된다.
-* View의 터치 이벤트가 정살적으로 호출된다.
+* View의 터치 이벤트가 정상적으로 호출된다.
+
+### 정리
+터치 이벤트가 발생하면, UIKit은 Gesture recognizer에 먼저 인벤트를 전달하게되고 Gesture recogniser가 터치 이벤트를 감지하고, 이를 제스처로 인식하면 해당 제스처를 처리하게된다.
+
+Gesture recogniser가 이벤트를 처리하면, 해당 터치 이벤트는 기본적으로 View에 전달되지 않게되는데, 이때 `cancelsTouchesInView = false`로 설정하면 제스처가 인식 되더라도 터치 이벤트는 View로 계속 전달된다.
+
+추가적으로 `cancelsTouchsInView = true` 상태면 View가 이벤트를 처리하지 못하게 되고 해당 이벤트는 super view controller나 상위 객체로 이벤트가 전달된다.
+
+BaseViewController에 아래 코드를 작성후 cancelsTouchesInView = true 상태에서 cell을 탭하니 콘솔로그에 찍히는 것을 확인할 수 있다
+
+~~~swift
+@objc private func dismissKeyboard() {
+    print("CALL: dismissKeyboard()")
+    view.endEditing(true)
+}
+~~~
+
+
+
+
 
 
 
