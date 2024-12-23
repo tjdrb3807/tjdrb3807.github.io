@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "iOS - RxDataSource
+title: "iOS - RxDataSource"
 sitemap: false
 categories: [study, ios]
 tags: [ios]
