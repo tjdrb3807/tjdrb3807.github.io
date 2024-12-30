@@ -106,15 +106,3 @@ extension ReactiveCompatible {
 }
 ~~~
 
-## Reactive Extension의 구성 요소
-### Binder
-* UI 업데이트에 특화면 Observer
-* 항상 메인 스레드에서 동작하며, 에러를 방출하지 않는다.
-
-### Observable
-* 기존 클래스의 이벤트를 Observable로 변환
-* 예: UIButton의 터치 이벤트를 ControllEvent로 변환
-
-### Observer
-* 데이터를 UI로 전달
-
