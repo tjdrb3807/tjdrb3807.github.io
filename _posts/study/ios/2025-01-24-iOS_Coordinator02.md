@@ -12,6 +12,19 @@ tags: [ios]
 ## TabBarCoordinator의 역할
 TabBarCoordinator는 Coordinator 프로토콜을 구현하며, 앱의 탭 네비게이션을 관리하는 핵심 역할을 합니다.
 
+본 프로젝트는 3개의 Tab(Home, Question History, My Library)이 존재하며, 플로팅 버튼을 통한 두 개의 플로우(AddBook, AddQuestion)을 제공합니다.   
+
+<div style="text-align: center;">
+  <img src="/assets/img/blog/ios/coordinator02.png" alt="Memory-structure image" loading="lazy" />
+</div>
+
+<br>
+위와같은 화면 전환을 제공하기 위해 TabBarCoordinator로 부터 5개의 ChildCoordinator가 필요하며, 각 코디네이터의 마지막 플로우에 공통적으로 제공하는 BookDetailController 화면 전환은 별도의 Coordinator로 분리하여 재사용성을 확보했습니다.
+
+<div style="text-align: center;">
+  <img src="/assets/img/blog/ios/coordinator01.png" alt="Memory-structure image" loading="lazy" />
+</div>
+
 ### Coordinator 패턴 적용
 먼저, TabBarCoordinator는 Coordinator 프로토콜을 따르며, 아래의 주요 속성을 가집니다.
 
