@@ -9,17 +9,25 @@ tags: [ios]
 * toc
 {:toc}
 
-## TabBarCoordinator의 역할
-TabBarCoordinator는 Coordinator 프로토콜을 구현하며, 앱의 탭 네비게이션을 관리하는 핵심 역할을 합니다.
+## ✋ Introduce
+이번 글에서는 BookKitty 프로젝트에서 도입한 Coordinator 패턴 중 TabBarCoordinator를 어떻게 구현했는지 소개하고자 합니다.
 
-본 프로젝트는 3개의 Tab(Home, Question History, My Library)이 존재하며, 플로팅 버튼을 통한 두 개의 플로우(AddBook, AddQuestion)을 제공합니다.   
+BookKitty는 MVVM-C 아키텍처를 기반으로 개발된 앱으로, 화면 전환을 효과적으로 관리하기 위해 Coordinator 패턴을 도입했습니다. 특히, 앱의 핵심 구조 중 하나인 TabBarController 기반의 화면 전환을 다루기 위해 TabBarCoordinator를 구현했으며, 이를 통해 각 탭의 흐름을 독립적으로 관리할 수 있도록 설계했습니다.
+
+이 글에서는 TabBarCoordinator의 역할과 구현 방식, 그리고 BookKitty에서 어떻게 활용했는지 자세히 설명하겠습니다.
+
+## TabBar Flow 설계
+Book_Kitty 프로젝트는 3개의 Tab(Home, Q&A, Library)이 존재하며, 플로팅 버튼을 통한 두 개의 플로우(AddBook, AddQuestion)를 제공합니다.   
 
 <div style="text-align: center;">
   <img src="/assets/img/blog/ios/coordinator02.png" alt="Memory-structure image" loading="lazy" />
 </div>
 
 <br>
-위와같은 화면 전환을 제공하기 위해 TabBarCoordinator로 부터 5개의 ChildCoordinator가 필요하며, 각 코디네이터의 마지막 플로우에 공통적으로 제공하는 BookDetailController 화면 전환은 별도의 Coordinator로 분리하여 재사용성을 확보했습니다.
+
+사진과 같은 화면 전환을 제공하기 위해 Tab 전환에 따른 플로우 3개, FloatingButton에 따른 플로우 2개 총 5개의 독립적인 화면 전환을 Coordinator로 분리하고, TabBarCoordinator에서 각각의 Coordinator를 생성해서 자식 Coordinator로 관리하는 방식을 설계했습니다.
+
+또한, 여러 플로우에서 공통적으로 접근하는 화면(BookDetail)은 별도의 Coordinator에서 관리할 수 있도록 설계해서 재사용성을 확보했습니다.
 
 <div style="text-align: center;">
   <img src="/assets/img/blog/ios/coordinator01.png" alt="Memory-structure image" loading="lazy" />
