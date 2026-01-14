@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "FeelTalk - MVVM 설계 전략 (Input–Output)"
+title: "FeelTalk - MVVM 패턴 설계 전략 (Input–Output)"
 sitemap: false
 categories: [study, ios]
 tags: [ios]
@@ -9,7 +9,7 @@ tags: [ios]
 * toc
 {:toc}
 
-![Thumbnail](/assets/img/blog/ios/feelTalk__MVVM 설계 전략_thumbnail.png)
+![Thumbnail](/assets/img/blog/ios/feelTalk_mvvm02_thumbnail.png)
 
 ## ✍️ Introduction
 이 글은 FeelTalk 프로젝트에서 ***MVVM (Model - View - ViewModel)* 패턴**과 RxSwift를 적용하며, *View*의 책임을 재정의하고 *ViewModel*을 어떤 기준으로 설계했는지를 정리합니다.
