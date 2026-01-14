@@ -12,13 +12,11 @@ tags: [ios]
 ![MVC Massive ViewController 구조](/assets/img/blog/ios/feelTalk_MVVM도입기_thumbnail.png)
 
 ## ✍️ Introduction
-이 글은 제가 학습한 MVVM 패턴을 실제 프로젝트에 적용하기까지의 과정을 정리한 기술 기록입니다.
+이 글은 MVVM 패턴을 실제 프로젝트에 적용하며, 아키텍처 설계와 ViewController 책임 분리에 대해 고민했던 과정을 다룹니다.
 
-특히 이전 개인 프로젝트를 진행하며 UIKit 기반 MVC 구조에서 발생했던 문제를 통해 아키텍처 설계의 중요성을 인지하게 된 경험을 공유하고자 합니다.
+특히 이전 개인 프로젝트를 진행하며 UIKit 기반 MVC 구조에서 발생했던 Massive ViewController 문제를 통해 아키텍처 설계의 중요성을 인지하게 된 경험을 공유하고자 합니다.
 
 ## 🧱 Background
-> 초기에는 문제가 없었던 MVC 구조가, 프로젝트 규모가 커지면서 어떤 한계를 드러냈는지를 정리합니다.
-
 이전 개인 프로젝트에서는 초기 구현 속도를 우선으로 하여 UIKit 기반 MVC 구조를 그대로 사용했습니다.
 
 프로젝트 초반에는 구조적인 문제를 크게 체감하지 못했지만, 화면 규모가 점차 커지고 기능이 추가되면서 ViewController의 역할이 점점 확장되기 시작했습니다.
@@ -86,8 +84,6 @@ private func fetchStationInfoSectionViewData(complitionHandler: @escaping (Resul
 이러한 문제를 반복하지 않기 위해, 이후 진행한 필로우톡 프로젝트에서는 아키텍처 설계 단계에서부터 ViewController의 책임을 명확히 제한하는 것을 핵심 목표로 삼았습니다.
 
 ## 🤔 Why MVVM?
-> Massive ViewController 문제를 구조적으로 해결하기 위해 필로우톡 프로젝트 특성에 맞는 아키텍처를 선택한 과정입니다.
-
 Massive ViewController 문제를 해결하기 위한 방법은 MVVM 패턴 이외에도 여러 가지가 있습니다.
 
 MVC 구조를 유지한 채 ViewController 내부 로직을 분리하거나, VIPER, Clean Architecture와 같은 아키텍처를 도입하는 방법도 고려할 수 있습니다.
@@ -107,8 +103,6 @@ MVVM은 ViewModel을 통해 화면 상태를 단일 흐름으로 관리할 수 �
 이러한 이유를 기반으로 필로우톡 프로젝트에서는 Massive ViewController를 방지하기 위한 대안으로 MVVM 패턴을 선택했습니다.
 
 ## 🔗 with RxSwift
-> View와 ViewModel을 연결하는 과정에서 RxSwift를 선택한 이유를 정리합니다.
-
 MVVM 패턴을 선택한 이후, 자연스럽게 View와 ViewModel을 연결하는 방식에 대한 고민으로 이어졌습니다.
 
 Delegate와 Closure는 UIKit 환경에서 가장 쉽게 적용할 수 있는 바인딩 방식이지만, 화면 복잡도가 증가할수록 다음과 같은 한계가 있었습니다.
@@ -137,4 +131,5 @@ RxSwift는 다음과 같은 바인딩 방식을 제공합니다.
 - RxSwift를 통한 View-ViewModel 바인딩 방식
 
 실제 필로우톡 프로젝트에 MVVM과 RxSwift를 적용한 구현 과정은 아래 글에서 이어서 다루고자 합니다.
+
 👉 [MVVM + RxSwift 실제 적용기](링크)
