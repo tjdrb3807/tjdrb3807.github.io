@@ -8,7 +8,7 @@ tags: [ios]
 
 * toc
 {:toc}
-![Thumbnail](/assets/img/blog/ios/feelTalk_MVVMPatern_refactoring_thumbnail.png)
+![Thumbnail](/assets/img/blog/ios/feelTalk_mvvm03_thumbnail.png)
 
 ## ✍️ Introduction
 이 글은 [FeelTalk - MVVM 설계 전략 (Input-Output)](https://tjdrb3807.github.io/study/ios/2025-12-23-iOS_FeelTalk_MVVM02/) 기술 문서를 작성하며 코드를 리뷰하는 과정에서,
