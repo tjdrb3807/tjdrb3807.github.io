@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "FeelTalk - MVVM 도입기(with RxSwift)"
+title: "FeelTalk - MVVM 패턴 도입기(with RxSwift)"
 sitemap: false
 categories: [study, ios]
 tags: [ios]
@@ -9,7 +9,7 @@ tags: [ios]
 * toc
 {:toc}
 
-![MVC Massive ViewController 구조](/assets/img/blog/ios/feelTalk_MVVM도입기_thumbnail.png)
+![MVC Massive ViewController 구조](/assets/img/blog/ios/feelTalk_mvvm01_thumbnail.png)
 
 ## ✍️ Introduction
 이 글은 MVVM 패턴을 실제 프로젝트에 적용하며, 아키텍처 설계와 ViewController 책임 분리에 대해 고민했던 과정을 다룹니다.
