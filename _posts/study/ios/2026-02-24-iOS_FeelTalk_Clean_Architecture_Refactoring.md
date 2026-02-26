@@ -213,6 +213,8 @@ func signUp(_ entity: SignUpInfo, accessToken: String, fcmToken: String) -> Sing
 
 ## 🎯 Result
 
+![Thumbnail](/assets/img/blog/ios/feelTalk_clean_architecture_refactoring_image05.png)
+
 이번 리팩토링을 통해 계층별 역할이 명확해지고, 의존성 방향이 완벽하게 통제되었습니다. 그 결과 다음과 같은 이점을 얻을 수 있었습니다.
 
 1. **테스트 용이성 (Testability) 향상**
